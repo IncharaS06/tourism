@@ -1,0 +1,189 @@
+/* Base dark theme */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+header .logo {
+    width: 120px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    border: 2px solid #fff;
+}
+
+/* QR Reader */
+#reader {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 360px;
+    border: 2px solid #fff;
+    border-radius: 12px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#result {
+    margin-top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.tick {
+    font-size: 80px;
+    color: #00e676;
+    text-shadow: 0 0 10px #00e676, 0 0 20px #00c853;
+    animation: pop 0.5s ease-out;
+}
+
+.cross {
+    font-size: 70px;
+    color: #ff1744;
+    text-shadow: 0 0 10px #ff1744, 0 0 20px #d50000;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0);
+    }
+
+    60% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* User Info Form */
+#user-info {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 700px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.profile img {
+    border-radius: 50%;
+    border: 2px solid #00e676;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.profile h2 {
+    margin: 0;
+    color: #00e676;
+    font-size: 24px;
+}
+
+.user-form {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 12px 20px;
+    align-items: center;
+}
+
+.user-form label {
+    font-weight: bold;
+    color: #fff;
+}
+
+.user-form p {
+    margin: 0;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px;
+    border-radius: 6px;
+}
+
+/* Progress bar */
+#progress-bar {
+    width: 90%;
+    max-width: 700px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    margin: 20px auto;
+    display: none;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: #00e676;
+    border-radius: 6px;
+    transition: width 0.5s ease;
+}
+
+/* Buttons */
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #00e676;
+    color: #000;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #00c853;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* Mobile */
+@media(max-width: 768px) {
+    .profile {
+        flex-direction: column;
+    }
+
+    .profile img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile h2 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .user-form {
+        grid-template-columns: 1fr;
+        gap: 8px 0;
+    }
+}
