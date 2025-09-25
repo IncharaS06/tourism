@@ -48,7 +48,7 @@ function showResult(valid, user) {
 // QR scanner init
 const scanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 });
 scanner.render(decodedText => {
-    fetch(`http://localhost:5000/api/verify-qr/${decodedText}`)
+   fetch(`https://tourism-9-iwx8.onrender.com/api/verify-qr/${qrCode}`)
         .then(res => res.json())
         .then(data => {
             scanner.clear().then(() => {
@@ -57,3 +57,4 @@ scanner.render(decodedText => {
             });
         }).catch(err => { console.error(err); showResult(false); });
 });
+
