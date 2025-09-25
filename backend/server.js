@@ -6,7 +6,8 @@ const PORT = 5000;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "frontend")));
+// Serve static frontend files
+app.use(express.static(path.join(__dirname, "../frontend")));
 
 const users = {
     "12345": {
@@ -43,8 +44,10 @@ app.get("/api/verify-qr/:qr", (req, res) => {
     else res.json({ success: false, message: "Invalid QR Code" });
 });
 
+// Default route - send tour.html
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "frontend", "tour.html"));
+  res.sendFile(path.join(__dirname, "../frontend/tour.html"));
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
