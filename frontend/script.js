@@ -52,7 +52,7 @@ function showResult(valid, user) {
     }, 800);
 }
 
-// ✅ FIXED: Removed hardcoded localhost
+// ✅ FIXED: Relative API call (works on localhost & Render)
 const scanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 });
 scanner.render(decodedText => {
     fetch(`/api/verify-qr/${decodedText}`)
