@@ -15,7 +15,14 @@ function showResult(valid, user) {
     progress.style.width = "0%";
     result.innerHTML = '<div class="tick">&#10004;</div>';
 
-    gsap.fromTo(".tick", { scale: 0 }, { scale: 1.2, duration: 0.5, ease: "back.out(2)", onComplete: () => { gsap.to(".tick", { scale: 1, duration: 0.2 }); } });
+    gsap.fromTo(".tick", { scale: 0 }, { 
+        scale: 1.2, 
+        duration: 0.5, 
+        ease: "back.out(2)", 
+        onComplete: () => { 
+            gsap.to(".tick", { scale: 1, duration: 0.2 }); 
+        } 
+    });
 
     setTimeout(() => {
         result.style.display = "none";
@@ -45,17 +52,19 @@ function showResult(valid, user) {
     }, 800);
 }
 
-// QR scanner init
+// ✅ FIXED: Removed hardcoded localhost
 const scanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 });
 scanner.render(decodedText => {
-   fetch(`https://tourism-13-iwx8.onrender.com/api/verify-qr/${qrCode}`)
+    fetch(`/api/verify-qr/${decodedText}`)
         .then(res => res.json())
         .then(data => {
             scanner.clear().then(() => {
                 if (data.success) showResult(true, data.user);
                 else showResult(false);
             });
-        }).catch(err => { console.error(err); showResult(false); });
+        })
+        .catch(err => { 
+            console.error(err); 
+            showResult(false); 
+        });
 });
-
-
