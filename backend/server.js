@@ -2,13 +2,13 @@ const express = require("express");
 const path = require("path");
 const cors = require("cors");
 const app = express();
-const PORT = process.env.PORT || 10000; // ✅ matches your Render logs
+const PORT = process.env.PORT || 10000; // Render provides PORT
 
 app.use(cors());
 app.use(express.json());
 
-// ✅ Serve static files from the current directory
-app.use(express.static(__dirname));
+// ✅ Serve static frontend files
+app.use(express.static(path.join(__dirname, "../frontend")));
 
 const users = {
     "12345": {
@@ -39,15 +39,16 @@ const users = {
     }
 };
 
+// ✅ API route
 app.get("/api/verify-qr/:qr", (req, res) => {
     const qr = req.params.qr;
     if (users[qr]) res.json({ success: true, user: users[qr] });
     else res.json({ success: false, message: "Invalid QR Code" });
 });
 
-// ✅ Serve tour.html from the current directory
+// ✅ Serve frontend entry
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "tour.html"));
+    res.sendFile(path.join(__dirname, "../frontend", "tour.html"));
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
