@@ -56,17 +56,9 @@ header .logo {
 }
 
 @keyframes pop {
-    0% {
-        transform: scale(0);
-    }
-
-    60% {
-        transform: scale(1.2);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+    0% { transform: scale(0); }
+    60% { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }
 
 /* User Info Form */
@@ -168,22 +160,8 @@ footer {
 
 /* Mobile */
 @media(max-width: 768px) {
-    .profile {
-        flex-direction: column;
-    }
-
-    .profile img {
-        width: 100px;
-        height: 100px;
-    }
-
-    .profile h2 {
-        font-size: 20px;
-        text-align: center;
-    }
-
-    .user-form {
-        grid-template-columns: 1fr;
-        gap: 8px 0;
-    }
+    .profile { flex-direction: column; }
+    .profile img { width: 100px; height: 100px; }
+    .profile h2 { font-size: 20px; text-align: center; }
+    .user-form { grid-template-columns: 1fr; gap: 8px 0; }
 }
